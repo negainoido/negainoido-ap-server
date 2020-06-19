@@ -1,13 +1,13 @@
 import os
 
+import icfpc2019.app as icfpc2019
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import icfpc2019.app as icfpc2019
 
 app = FastAPI()
 
 
-@app.get('/api/v1/hello')
+@app.get("/api/v1/hello")
 async def index():
     return {"message": "hello world!"}
 
