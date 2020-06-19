@@ -40,3 +40,5 @@ jobs:
         # Specify commit message
         commit-message: apply formatter
         rebase: true
+        email: ${name}@users.noreply.github.com
+        name: github action
