@@ -42,7 +42,7 @@ def apply_sql_file(dirname: str, script: str):
         cur = conn.cursor()
         try:
             sql = f.read().replace("%", "%%")
-            print( "execute sql:", sql)
+            print("execute sql:", sql)
             res = cur.execute(sql, multi=True)
             for row in res:
                 if row.with_rows:
