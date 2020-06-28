@@ -16,9 +16,7 @@ async def index():
 @app.middleware("http")
 async def auth_secret_token(request: Request, call_next):
     if os.getenv("PRODUCTION"):
-        if "X-Negainoido-Secret" not in request.headers or request.headers[
-            "X-Negainoido-Secret"
-        ] != os.getenv("SECRET_TOKEN"):
+        if request.headers.get("X-Negainoido-Secret") != os.getenv("SECRET_TOKEN"):
             return JSONResponse(content={"error": "Unauthorized"}, status_code=401)
     return await call_next(request)
 
