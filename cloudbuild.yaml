@@ -19,6 +19,11 @@ steps:
   dir: 'frontend/build'
   waitFor: ['frontend-npm-build']
 
+- name: 'busybox'
+  args: ['tar', 'cvf', 'dbscript-$BRANCH_NAME.tgz', '.']
+  dir: 'backend/sql'
+  waitFor: ['-']
+
 # https://cloud.google.com/cloud-build/docs/speeding-up-builds?hl=ja#using_a_cached_docker_image
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
@@ -42,5 +47,5 @@ images:
 
 artifacts:
   objects:
-    location: 'gs://artifacts.$PROJECT_ID.appspot.com/frontend/'
-    paths: ['frontend/build/frontend-$BRANCH_NAME.tgz']
+    location: 'gs://artifacts.$PROJECT_ID.appspot.com/ap-server/'
+    paths: ['frontend/build/frontend-$BRANCH_NAME.tgz', 'backend/sql/dbscript-$BRANCH_NAME.tgz']
