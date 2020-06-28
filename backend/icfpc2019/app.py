@@ -10,11 +10,12 @@ dbconfig = {
     "charset": "utf8mb4",
     "collation": "utf8mb4_bin",
     "pool_name": "pool-icfpc2019",
-    "host" : os.getenv("DB_HOST") or "localhost",
-    "port" : os.getenv("DB_PORT") or "3306"
+    "host": os.getenv("DB_HOST") or "localhost",
+    "port": os.getenv("DB_PORT") or "3306",
 }
 
 router = APIRouter()
+
 
 @router.get("/")
 async def index():
