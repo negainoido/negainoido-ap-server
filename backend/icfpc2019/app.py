@@ -10,16 +10,11 @@ dbconfig = {
     "charset": "utf8mb4",
     "collation": "utf8mb4_bin",
     "pool_name": "pool-icfpc2019",
+    "host" : os.getenv("DB_HOST") or "localhost",
+    "port" : os.getenv("DB_PORT") or "3306"
 }
 
-if os.getenv("PRODUCTION"):
-    dbconfig["unix_socket"] = "/cloudsql/" + os.getenv("DB_SOCK")
-else:
-    dbconfig["host"] = os.getenv("DB_HOST") or "localhost"
-    dbconfig["port"] = os.getenv("DB_PORT") or "3306"
-
 router = APIRouter()
-
 
 @router.get("/")
 async def index():
